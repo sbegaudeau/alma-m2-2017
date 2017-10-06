@@ -23,8 +23,8 @@ after_success:
 
 deploy:
   provider: releases
-  api_key: "GITHUB OAUTH TOKEN"
-  file: "FILE TO UPLOAD"
+  api_key: "b12a382bf893c4ab4036226d3ea0c539e2746c2a"
+  file: "README.md"
   skip_cleanup: true
   on:
     tags: true
