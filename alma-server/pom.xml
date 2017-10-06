@@ -32,7 +32,6 @@
         <docker.image.prefix>LATorganization</docker.image.prefix>
     </properties>
 
-
     <build>
         <plugins>
             <plugin>
