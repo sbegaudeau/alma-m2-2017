@@ -29,7 +29,7 @@
 
     <properties>
         <java.version>1.8</java.version>
-        <docker.image.prefix>LATorganization</docker.image.prefix>
+        <docker.image.prefix>latorganization</docker.image.prefix>
     </properties>
 
     <build>
@@ -57,8 +57,8 @@
                             <goal>tag</goal>
                         </goals>
                         <configuration>
-                            <image>LATorganization/alma-server:${project.version}</image>
-                            <newName>hub.docker.com/LATorganization/alma-server:${project.version}</newName>
+                            <image>latorganization/alma-server:${project.version}</image>
+                            <newName>hub.docker.com/latorganization/alma-server:${project.version}</newName>
                         </configuration>
                     </execution>
                 </executions>
