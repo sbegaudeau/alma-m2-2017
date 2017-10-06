@@ -29,6 +29,7 @@
 
     <properties>
         <java.version>1.8</java.version>
+        <docker.image.prefix>LATorganization</docker.image.prefix>
     </properties>
 
 
