@@ -23,7 +23,7 @@
 
     <properties>
         <java.version>1.8</java.version>
-		<docker.image.prefix>ORGANIZATION_NAME</docker.image.prefix>
+		<docker.image.prefix>Araya-Begaudeau</docker.image.prefix>
     </properties>
 
 
