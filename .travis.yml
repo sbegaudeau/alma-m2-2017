@@ -19,7 +19,7 @@ after_success:
 deploy:
   provider: releases
   api_key: 86946d56927440e6bb57890cda836f4ceef633d5
-  file: alma-server-1.0.0-SNAPSHOT.jar
+  file: "alma-server-1.0.0-SNAPSHOT.jar"
   skip_cleanup: true
   on:
     tags: true
