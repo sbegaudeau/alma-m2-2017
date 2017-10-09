@@ -1,16 +1,29 @@
 sudo: required
 services:
 - docker
+
 language: java
 jdk: oraclejdk8
+
 branches:
   only:
   - master
+
 before_install:
 - docker version
 - docker info
+- node --version
+- npm --version
+
 script:
+- cd alma-server/src/main/resources
+- pwd
+- npm install -g gulp
+- npm install
+- gulp minify
+- cd ../../../../
 - mvn clean verify -f alma-server/pom.xml -e
+
 after_success:
 - docker login -e $DOCKER_EMAIL -u $DOCKER_USER -p $DOCKER_PASSWORD
 - docker images
@@ -18,8 +31,9 @@ after_success:
 
 deploy:
   provider: releases
-  api_key: 86946d56927440e6bb57890cda836f4ceef633d5
+  api_key:
+    secure: "BI+PI/p1WgI2PWTUfZAfka6DstPSc7IYP3ilTbZIwkR6EaCdMVkMRDuXnCP3O5DMtOpiE4dffl2hP28cLJFofWE53jVSe/1dVgQbhLtHQFu9KiFct3OjHuTecZfYIycHFD9CoDuCRW7CjlyUqsj+XeGyQqGukq5GjXz1URrRhu6epMDHt95o8Lk7rOyxgvSZRqFwZArEFPXNqMkeWIgpp0KM+XqeuZxCptteMwX88Li1GM5Fu+oXoBWjO5mwBovV8Ajo1F/8NFfmjddfyVAHU24zOq7aEpm6ii3kcwSmv/sNdV85pUaF5kzyvqD64PgDAWYFVWTz2sS5arUvK/ak3VQa28RuCUxzmiJMYS2TzjIWDLE9jhSgGTHyafLkr0sUEeKB3901aa6cabOdzbtQ5wWtq+UkgC25SxwSFf6hvNO/78md82LZcO1PqoySqVS1UZxSBoRv9KKYMmGat1Kzgj70kcHpkPMqTdMdZyzCpL+lD8okaCd2PxLF1OFlJENQOeNY0EJUaWVj/T20BvCzG79quJzGIcrc4el9qrvJhuxTGsv4rlM/RVw94jXeeoHYsdS+3zYLwW1nMeIm5M0ZCpSPZzHz7TrfhbDRKf3UzWQsVSQO0p/ifOHv7aZxLibf9TJSHE98Jru0zqeaSYY1J6q4JohA2Ce/pZOy4YIQ/EA="
   file: "alma-server-1.0.0-SNAPSHOT.jar"
-  skip_cleanup: true
+ skip_cleanup: true
   on:
     tags: true
