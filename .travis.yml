@@ -24,8 +24,9 @@ after_success:
 
 deploy:
   provider: releases
-  api_key: a723de2b95bff23bc920c7754aba37a31434576f
+  api_key: 
+    secure: a723de2b95bff23bc920c7754aba37a31434576f
   file: "alma-server-1.0.0-SNAPSHOT.jar"
   skip_cleanup: true
   on:
-  tags: true
+    tags: true
