@@ -51,7 +51,7 @@
                             <goal>tag</goal>
                         </goals>
                         <configuration>
-                            <image>charlene-marie/alma-server:${project.version}</image>
+                            <image>charlenemarie/alma-server:${project.version}</image>
                             <newName>hub.docker.com/charlenemarie/alma-server:${project.version}</newName>
                         </configuration>
                     </execution>
