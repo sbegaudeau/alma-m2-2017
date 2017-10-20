@@ -26,4 +26,4 @@ deploy:
   api_key: $API_KEY
   name: Build Travis $(date +'%d.%m.%Y %R')
   on:
-    repo: latorganization/alma-m2-2017
+    repo: LATorganization/alma-m2-2017
