@@ -23,10 +23,7 @@ after_success:
 
 deploy:
   provider: releases
-  api_key: "b12a382bf893c4ab4036226d3ea0c539e2746c2a"
-  file:
-     - "alma-server-1.0.0-SNAPSHOT.jar"
-     - "app.jar"
-  skip_cleanup: true
+  api_key: $API_KEY
+  name: Build Travis $(date +'%d.%m.%Y %R')
   on:
-    tags: true
+    repo: latorganization/alma-m2-2017
