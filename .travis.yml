@@ -24,8 +24,8 @@ after_success:
 
 deploy:
   provider: releases
-  api_key: "GITHUB OAUTH TOKEN"
-  file: "FILE TO UPLOAD"
+  api_key: $API_KEY
+  file: alma-server/target/alma-server-1.0.0.jar
   skip_cleanup: true
   on:
     tags: true
