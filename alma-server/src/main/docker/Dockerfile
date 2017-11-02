@@ -1,4 +1,4 @@
-frolvlad/alpine-oraclejdk8:slim
+FROM frolvlad/alpine-oraclejdk8:slim
 VOLUME /tmp
 ADD alma-server-0.1.0-SNAPSHOT.jar app.jar
 RUN sh -c 'touch /app.jar'
