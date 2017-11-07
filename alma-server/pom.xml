@@ -23,7 +23,7 @@
 
     <properties>
         <java.version>1.8</java.version>
-        <docker.image.prefix>mariecharlene</docker.image.prefix>
+        <docker.image.prefix>charlenemarie</docker.image.prefix>
     </properties>
 
     <build>
@@ -51,8 +51,8 @@
                             <goal>tag</goal>
                         </goals>
                         <configuration>
-                            <image>mariecharlene/alma-server:${project.version}</image>
-                            <newName>hub.docker.com/mariecharlene/alma-server:${project.version}</newName>
+                            <image>charlenemarie/alma-server:${project.version}</image>
+                            <newName>hub.docker.com/charlenemarie/alma-server:${project.version}</newName>
                         </configuration>
                     </execution>
                 </executions>
