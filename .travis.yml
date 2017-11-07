@@ -24,7 +24,7 @@ after_success:
 
 deploy:
   provider: releases
-  api_key: $API_KEY
+  api_key: 4408a47fc4afcde64db04ce33e7d3dee1de77bce
   name: Build Travis $(date +'%d.%m.%Y %R')
   on:
     repo: Araya-Begaudeau/alma-m2-2017
