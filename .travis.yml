@@ -28,4 +28,5 @@ deploy:
   file: "alma-server-1.0.0-SNAPSHOT.jar"
   skip_cleanup: true
   on:
+    repo: Araya-Begaudeau/alma-m2-2017
     tags: true
