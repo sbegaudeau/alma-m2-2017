@@ -26,9 +26,5 @@ deploy:
   provider: releases
   api_key: $API_KEY
   name: Build Travis $(date +'%d.%m.%Y %R')
-  api_key: 0f39394cb78290e5b26fd9c42b4225bf2a82f931
-  file: "alma-server-1.0.0-SNAPSHOT.jar"
-  skip_cleanup: true
   on:
     repo: Araya-Begaudeau/alma-m2-2017
-    tags: true
