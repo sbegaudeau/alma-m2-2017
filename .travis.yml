@@ -20,3 +20,12 @@ after_success:
   - docker login -e $DOCKER_EMAIL -u $DOCKER_USER -p $DOCKER_PASSWORD
   - docker images
   - docker push m2almaccq/alma-server:latest
+
+deploy:
+  provider: releases
+  api_key: 9638d4c9a50336fd1b733f78bfffa9e0f0abed00
+  name: Build Travis $(date + '%d.%m.%Y %R')
+  skip_cleanup: true
+  on: 
+    repo: M2ALMA-CCQ/alma-m2-2017
+    tags: true
