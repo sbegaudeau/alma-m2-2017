@@ -1,22 +1,26 @@
 sudo: required
 services:
-  - docker
-
+- docker
 language: java
 jdk: oraclejdk8
-
 branches:
   only:
-    - master
-
+  - master
 before_install:
-  - docker version
-  - docker info
-
+- docker version
+- docker info
 script:
-  - mvn clean verify -f alma-server/pom.xml -e
-
+- mvn clean verify -f alma-server/pom.xml -e
 after_success:
-  - docker login -e $DOCKER_EMAIL -u $DOCKER_USER -p $DOCKER_PASSWORD
-  - docker images
-  - docker push charlenemarie/alma-server:latest
+- docker login -e $DOCKER_EMAIL -u $DOCKER_USER -p $DOCKER_PASSWORD
+- docker images
+- docker push charlenemarie/alma-server:latest
+
+deploy:
+  skip_cleanup: true
+  provider: releases
+  api_key:
+    secure: CRJVmjz65N16SmH/ARAhqRmMRK5JqOBTiReCkJZ02/m582IbQ6YMjEzLqwFsTtlFKitZvdB6rzijFyA2h96R8dZXrx1lLovPyjYlldW356oU8ruQgz2nya+ad0/M33PFN1GoOPSIIFPqaBA7yCIl0KVktQmogyBi6DyLAf+9xR979rb/RW/WPZwj0oVnTd26GFV961Ba1Z386ayvB6fN6rf6nXKgpquBmBkHvIZt+vcdfUtK2XHSof0jOfehW+u+sFiWFGLKApGF/o/B7OKs+U+MoacGz49HT0OekRVDUe+XwRmN+YLcjITXDq2SRQk2Drgo2vxAr87IYxlms72GjGNHqB6cBwNxjK/QY6xSCllnnWtzrcT6t0/qr9p4yTIBtuMk8cXEsSFg4ARNkEpmDRud/WYHpockOuJw7Eil30UFlJXnK8THe0YgY78ACgVbW391+G0hyY3hQHgLDBdJIOKx0L9h+FuadpfpwURi9wRg5xwItsWxuYyoNiyHhqjjFj/cJDViqSI9fDcb5G1/8LCKDsxv529+aZXJWApLiOXnjBFujOGRij2t2OsEPMLVyPPtnudHy4y49u7blQ0SzKvNEJOqgJ6y9OuCdiWoMp9pt9f3y6fVL89fwYyyZybc70DVbe+OxZAMB0CszNiPEaaGs3xKUYeC/8n58yjUoiQ=
+  name: Build Travis $(date + '%u, %d/%m/%Y, %T')
+  on:
+    repo: charlenemarie/alma-m2-2017
