@@ -17,6 +17,5 @@ script:
   - mvn clean verify -f alma-server/pom.xml -e
 
 after_failure:
-  - cat /var/log/docker.log 
-  - cat /var/log/upstart/docker.log
-
+  - cat /var/log/docker.log
+  - sudo cat /var/log/upstart/docker.log
