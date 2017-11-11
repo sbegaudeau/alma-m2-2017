@@ -22,4 +22,5 @@ deploy:
   api_key: $PA_TOKEN
   name: Build Travis $(date + '%u, %d/%m/%Y, %T')
   on:
+    tags: true
     repo: charlenemarie/alma-m2-2017
