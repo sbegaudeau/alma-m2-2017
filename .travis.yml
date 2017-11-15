@@ -1,0 +1,38 @@
+sudo: required
+services:
+  - docker
+
+language: java
+jdk: oraclejdk8
+
+branches:
+  only:
+    - master
+
+before_install:
+  - docker version
+  - docker info
+  - node --version
+  - npm --version
+
+script:
+  - cd alma-server/src/main/resources
+  - pwd
+  - npm install -g gulp
+  - npm install
+  - gulp minify
+  - cd ../../../../
+  - mvn clean verify -f alma-server/pom.xml -e
+
+after_success:
+- docker login -e $DOCKER_EMAIL -u $DOCKER_USER -p $DOCKER_PASSWORD
+- docker images
+- docker push foorganization/alma-server:latest
+
+deploy:
+  provider: releases
+  api_key:
+    secure: dKMPolkmLrUvhrN4rI1WPOjTcuAd5c37QSFK5sNzRCmYdADhAWzQQ+B4ybKDGAOrBtPXATX3KBXgHL7r2uMkLbgqPSvGwRn2V2i2Fkq/Z9DLyZ85iY4m5XJ9zD07LLyuFfwp42E/VKG+RusIrDUtHAipBUTgpZdefadM4+9BRXz2x/16kyv48PpcJis43LtVNPyIVsi+Pa/fyw4uBMPV5Hb/HQhEE5KmAeT7U/j1BxTCAchpKHDTqsz28A7PR5wKg+BMJvROg75sqKW3TIuTIfvQox8RnMMQXpvOh6tgHE7+1Wed4Qya6qeSH7wfWH19fTzM2E5481qsvwmugT5JH6DmeaEe4sNbY39dCxR57NWGeAdK+fG5tMoARUZP3DzMlzaycaeiOZEdffV2uQDH2UPWfDd1Ucq8L1yCOHj0/PdzTIluIyxpjBciSES3FSnvQltAvq/R7BxV8F2slxgE2fS0GTWf2DEtYuGjnnthtZJByxc7gVxowlNsj0Wh5Jmy+rZ/+/z62uKf7HpPXbT05TfPax0Y3hvP3DJtH31bJXYKEfS2bxbYGQzTJEf13OGVi2CfoCKmowd7Qf9yWo9dZfhEygeqq3IMEQrlNYWrRBSnJROvdJobL5Z3AbEnjV90xdxvQckvetdFUyNhKhy0p07dg+yDOLMuiz89KVzd620=
+  name: Build Travis $(date +'%d.%m.%Y %R')
+  on:
+    repo: foo-organization/alma-m2-2017
