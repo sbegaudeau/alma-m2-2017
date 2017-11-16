@@ -1,32 +1,25 @@
 sudo: required
 services:
-  - docker
-
+- docker
 language: java
 jdk: oraclejdk8
-
 branches:
   only:
-    - master
-
+  - master
 before_install:
-  - docker version
-  - docker info
-
+- docker version
+- docker info
 script:
-  - mvn clean verify -f alma-server/pom.xml -e
-
+- mvn clean verify -f alma-server/pom.xml -e
 after_success:
-  - docker login -e $DOCKER_EMAIL -u $DOCKER_USER -p $DOCKER_PASSWORD
-  - docker images
-  - docker push hodororganizo/alma-server:latest
-
+- docker login -e $DOCKER_EMAIL -u $DOCKER_USER -p $DOCKER_PASSWORD
+- docker images
+- docker push hodororganizo/alma-server:latest
 deploy:
   provider: releases
-  api_key: $API_KEY
-  file: "alma-server-1.0.0-SNAPSHOT.jar"
-  name: Build Travis $(date + '%d.%m.%Y %R')
   skip_cleanup: true
+  api_key: $API_KEY
+  name: Build Travis $(date + '%d.%m.%Y %R')
   on:
-	repo: hodororganizo/alma-m2-2017
+    repo: hodororganizo/alma-m2-2017
     tags: true
