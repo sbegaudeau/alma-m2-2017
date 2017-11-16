@@ -2,6 +2,6 @@
 
 This repository will contain the source code of the ALMA server based on Spring Boot.
 
-Poject memeber:
-		BELASSAL
-		MESSAOUD
+Poject members:
+		BELASSAL Salma (Student B,C)
+		MESSAOUD Nadhir (Student B)
