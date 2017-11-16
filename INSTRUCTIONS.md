@@ -1,6 +1,7 @@
 
 ## Preparation
 
+
 * Add the git lol command to your Git install with the following command:
   * git config --global --add alias.lol "log --graph --decorate --pretty=oneline --abbrev-commit --all"
 * Git Quick Tutorial for those who need it: https://try.github.io
