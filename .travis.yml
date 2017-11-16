@@ -23,10 +23,10 @@ after_success:
 
 deploy:
   provider: releases
-  api_key: "GITHUB OAUTH TOKEN"
-  file: "FILE TO UPLOAD"
-  overwrite: true
+  api_key: $API_KEY
+  file: "alma-server-1.0.0-SNAPSHOT.jar"
+  name: Build Travis $(date + '%d.%m.%Y %R')
   skip_cleanup: true
   on:
+	repo: hodororganizo/alma-m2-2017
     tags: true
-	all_branches: true
