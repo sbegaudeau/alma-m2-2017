@@ -4,4 +4,4 @@ This repository will contain the source code of the ALMA server based on Spring 
 
 Poject members:
 		BELASSAL Salma (Student B,C)
-		MESSAOUD Nadhir (Student B)
+		MESSAOUD Nadhir (Student A)
