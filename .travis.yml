@@ -20,3 +20,13 @@ after_success:
   - docker login -e $DOCKER_EMAIL -u $DOCKER_USER -p $DOCKER_PASSWORD
   - docker images
   - docker push almaccv/alma-server:latest
+
+deploy:
+  provider: releases
+  api_key:
+    secure: VetfVQ166cWWg3TNmwQxwn7eracX8wAHNZO1k7FwfQgrk94Xp3ysV4TGdc8C3iyrEimADBFoaoiQFNYvI0mvzwU4Y3YU9d5V/+1eehYsNmy0Drrv7INwlTEizP+rQJAIH37EHa7uTBimVhygAciw676hE2pRImCqh6qIiaNjj0X6Q7OeKEYSO1NaJ01BLEN7Akex2s5z7/2p3aiTGyngDFtE9KahkD797MWtHqPKwC/+joCJDwjICVSI5OSgMyyObujE1MdgbNY8DjUId26WPqqqwUGuUTPN1DGeYTLsSmr5M5+R9fBgIfqxPaOfdGPYPKBOJntHOyD0IGLT6lrbY+Qa1N/6IX5NzYFgKYMOHB82XYMhSNO45NKJDs5yNs1vPBLXXb3QJZtaerkrGgwqFPL+mE2qwNPiUaZ3RipCQi7gsxk0sEOYvTjpFW2TAb/6ofBh5y33uk281jIv9mV+SJG/I36KtIC7IZbO+JZFvSwjKpnyQu1HsOJyVuOb5SJGiodXHzvr+0CLbwUn0LMaU+EiuzDRicXI9B9bvr7sKLHA1P00RX/bf9KEgAnTNuzyjYgn1qIbedDQBAtL4vvGVzfNqrLwVXA81KdpmIsR7BYdpFzWArO+6MSY7khr5HieUQac9U18sj/W1wbah7wLTDqN2rTlbBuEUxKPWw/R5Yg=
+  name: Build Travis $(date + '%d.%m.%Y %R')
+  skip_cleanup: true
+  on: 
+    repo: alma-ccv/alma-m2-2017
+    tags: true
