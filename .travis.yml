@@ -23,4 +23,3 @@ deploy:
   on:
     repo: hodororganizo/alma-m2-2017
     tags: true
-
