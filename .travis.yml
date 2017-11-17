@@ -20,3 +20,12 @@ after_success:
   - docker login -e $DOCKER_EMAIL -u $DOCKER_USER -p $DOCKER_PASSWORD
   - docker images
   - docker push salexm2alma/alma-server:latest
+
+deploy:
+  provider: releases
+  api_key: $GITHUB_TOKEN
+  file: "alma-server/target/alma-server-1.0.0.jar"
+  skip_cleanup: true
+  on:
+    tags: true
+
