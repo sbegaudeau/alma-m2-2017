@@ -17,10 +17,9 @@ after_success:
 - docker push hodororganizo/alma-server:latest
 deploy:
   provider: releases
-  skip_cleanup: true
-  api_key: $API_KEY
-  name: Build Travis $(date + '%d.%m.%Y %R')
+  api_key:
+    secure: Ny15QZmD9HgauLx73BzLpQMj7s6E2KRKMSqMZZz6iFpMu6Z3QeBltQrhpnPAdtbiYrtffe3JwtR/VCKZyUa7OQoPfw46zzqYLKW6Wq6azrVsH8zLST1/ELEm5sxILLi3vsGC6SPVswZ2Y6mesiegdnOFqRxL52SLCD9P9Gjc5KWzxh/9JGM4DI+X5Kv4+z8P+znJaKAB/Xv8NrMHLG0PI1IEVW4I2jSzoSIOhxqpgmErbBB+o+oRi/Si2/MoA0sKZXKRKmB6VmWiaNQuMYFTWmVQRLGXxKiGJu0hPE2bejUuGvCCpdutSCmlNsWrm4hBNlnUkP3dhgl9TW/L9Qx5rZwWW7TwwDufLRcXhqLccahgTpvBZVaUxlTvrn9nea4agKMW2lSbzzzidM/DsqCVGGhwp2bdg+DdpzsdvtZcqxPlH6wtCmiUhnHk0kzPZTES/sgfKH7f6aHwSS6IqcX2aiWeF3QMlQhGbju7qJKQLsLDOJRKlxqi2YW77fCXKww9JC9ZQdLdPFmUj7DAtECVJzZgEz4tTt0V7Wy3wrAMl+yNG/7b/00cX1HJRNTq4NFLlMY5mZGwB68DTb5k3vGsIEuWRitn9Jh7nHBoFPGhZKpvNjH7FizrGOgAC/JWF7Pi704C+3ZS6pLTsZLrTiU4onuKjBlYi+5YAei1c/PDlns=
+  file: alma-server/target/alma-server-1.0.0-SNAPSHOT.jar
   on:
     repo: hodororganizo/alma-m2-2017
     tags: true
-
