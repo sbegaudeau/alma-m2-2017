@@ -24,7 +24,7 @@ after_success:
 deploy:
   provider: releases
   api_key: "ab3e8406e1d4f900d6dc61b021ea72557e14bada"
-  file_glob:true
+  file_glob: true
   file: *
   skip_cleanup: true
   on:
