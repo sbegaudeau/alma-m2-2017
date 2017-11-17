@@ -1,4 +1,4 @@
-ackage fr.univnantes.alma.server.tests;
+package fr.univnantes.alma.server.tests;
 
 import static org.hamcrest.Matchers.equalTo;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
