@@ -1,4 +1,4 @@
-package fr.univnantes.alma.server.controllers;
+package fr.univnantes.alma.server.CONTROLLERS;
 
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.RequestMapping;
