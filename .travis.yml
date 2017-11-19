@@ -1,0 +1,33 @@
+sudo: required
+services:
+- docker
+language: java
+jdk: oraclejdk8
+branches:
+  only:
+  - master
+before_install:
+- docker version
+- docker info
+- node --version
+- npm --version
+script:
+- cd alma-server/src/main/resources
+- pwd
+- npm install -g gulp
+- npm install
+- gulp minify
+- cd ../../../../
+- mvn clean verify -f alma-server/pom.xml -e
+after_success:
+- docker login -e $DOCKER_EMAIL -u $DOCKER_USER -p $DOCKER_PASSWORD
+- docker images
+- docker push hodororganizo/alma-server:latest
+deploy:
+  provider: releases
+  api_key:
+    secure: x68CWm5Eoh9+pxYr46v0X+CaCynwYm4BDAS5OtFwaECFbFQirZmSKYlfKOulW1is/+vdvBS5DZJFJyXaHiR0DBgax1BcWjXQD4elau9TzHwrFoiYObA3yqzrGCVlvSaAVvqTlYwg4QA0I4t5WH5TtXSuQJEkrLfxWLgJVPu/C7m+SZ0y8eLXvSJ7jDiyU8vKppdbq3IRAMp/Pn3JFqMVTqgmoh5OuXiRk9UIV6D1whPyDBNP/DyLXDE9fYsA+EiP540qpb0/T1FHaTa+ykaosMnakYaZiq9nMKNo4Hq6UtY1/AFwlHyTqF7yTQ06U2zR24UzUlBviBCfxpzipsUiMr/yL2yXsoUH+afkqE1Ru4em8D9LQyepYG0jJ6DL8kIcfj0E9+HKawEZF+kXql4pXlzvf5ohMu18i+FzCuTBEXf/kXSOn+g7Tz1Ae8nM3GpffhqGjr9g0kDQpnD7IxauWeHikPmkNREeGIBOOcRH5GvGNDo0HHg/U0tesFcym/2aZGX18KDIMtbynYVdvjIG0i9QDZS8MmJ/8tq8ckRGkfU/2EDL1kyYDrgEA1dfnqpCZTjxmvIqj2rF+zEJRWdaB7SCcMK4424HXIyoFyQLy9GjnLPMS7fRSYmkyFX7P/y+Ise5WukkeCd8IS6zw4ftAaYXv2bU9EcSBB57Z/3u/5Y=
+  file: alma-server/target/alma-server-1.0.0-SNAPSHOT.jar
+  on:
+    repo: hodororganizo/alma-m2-2017
+    tags: true
